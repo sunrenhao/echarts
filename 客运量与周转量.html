@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html style="height: 100%">
+  <head>
+    <meta charset="utf-8" />
+    <title>ECharts 客运量与周转量</title>
+    <!-- 引入 ECharts 文件 -->
+    <script src="https://cdn.bootcdn.net/ajax/libs/echarts/5.3.3/echarts.min.js"></script>
+  </head>
+  <body style="height: 100%; margin: 0">
+    <!-- 为ECharts准备一个具备大小（宽高）的Dom -->
+    <div id="main" style="height: 100%"></div>
+    <script type="text/javascript">
+      // 基于准备好的dom，初始化echarts实例
+      var myChart = echarts.init(document.getElementById("main"));
+
+      // 指定图表的配置项和数据
+      var option = {
+        title: {
+          text: "客运量与周转量",
+          left: "center",
+        },
+        tooltip: {
+          trigger: "axis",
+          axisPointer: {
+            type: "cross",
+            label: {
+              backgroundColor: "#6a7985",
+            },
+          },
+        },
+        legend: {
+          data: ["客运量", "旅客周转量"],
+          top: "5%",
+        },
+        xAxis: {
+          type: "category",
+          data: [
+            1990, 1991, 1992, 1993, 1994, 1995, 1996, 1997, 1998, 1999, 2000,
+            2001, 2002, 2003, 2004, 2005, 2006, 2007, 2008, 2009, 2010, 2011,
+            2012, 2013, 2014, 2015, 2016, 2017, 2018, 2019, 2020, 2021, 2022,
+            2023,
+          ], // 替换为您的实际时间数据
+        },
+        yAxis: [
+          {
+            type: "value",
+            name: "客运量",
+            scale: true,
+            axisLabel: {
+              formatter: "{value} 万人",
+            },
+          },
+          {
+            type: "value",
+            name: "旅客周转量",
+            scale: true,
+            position: "right",
+            axisLabel: {
+              formatter: "{value} 亿人公里",
+            },
+          },
+        ],
+        series: [
+          {
+            name: "客运量",
+            type: "line",
+            yAxisIndex: 0, // 使用左侧的y轴
+            data: [
+              95712, 95080, 99693, 105458, 108738, 102745, 94797, 93308, 95085,
+              100164, 105072, 105155, 105606, 97260, 111764, 115583, 125655,
+              135670, 146192, 152451, 167609, 186226, 189336, 210596, 230460,
+              253484, 281405, 308379, 337494, 366002, 220349, 261170, 167296,
+              368498,
+            ], // 替换为您的客运量数据
+          },
+          {
+            name: "旅客周转量",
+            type: "line",
+            yAxisIndex: 1, // 使用右侧的y轴
+            data: [
+              2613, 2828, 3152, 3483, 3636, 3545, 3347, 3584, 3773, 4135, 4532,
+              4766, 4969, 4788, 5712, 6061, 6622, 7216, 7778, 7878, 8762, 9612,
+              9812, 10595, 11241, 11960, 12579, 13456, 14146, 14706, 8266, 9567,
+              6577, 14717,
+            ], // 替换为您的周转量数据
+          },
+        ],
+      };
+
+      // 使用刚指定的配置项和数据显示图表。
+      myChart.setOption(option);
+    </script>
+  </body>
+</html>
