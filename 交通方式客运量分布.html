@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>两个ECharts图表示例</title>
+    <!-- 引入 ECharts 文件 -->
+    <script src="https://cdn.bootcdn.net/ajax/libs/echarts/5.3.3/echarts.min.js"></script>
+    <style>
+      .container {
+        display: flex;
+        justify-content: space-between;
+        margin: 0;
+        padding: 0;
+        height: 400px;
+        width: 1000px;
+      }
+      .left-half,
+      .right-half {
+        flex: 1;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <div class="left-half" id="chart1">
+        <!-- 左侧容器的内容 -->
+        我是左侧容器
+      </div>
+      <div class="right-half" id="chart2">
+        <!-- 右侧容器的内容 -->
+        我是右侧容器
+      </div>
+    </div>
+
+    <script>
+      // 基于准备好的dom，初始化echarts实例
+      var myChart1 = echarts.init(document.getElementById("chart1"));
+      var myChart2 = echarts.init(document.getElementById("chart2"));
+
+      // 指定图表的配置项和数据
+      option1 = {
+        color: ["#8ECFC9", "#FFBE7A", "#FA7F6F", "#82B0D2"],
+        title: {
+          text: "2013交通方式客运量分布",
+          left: "center",
+        },
+        tooltip: {
+          trigger: "item",
+        },
+        series: [
+          {
+            name: "客运量",
+            type: "pie",
+            radius: "70%",
+            data: [
+              { value: 210597, name: "铁路" },
+              { value: 1853463, name: "公路" },
+              { value: 23535, name: "水路" },
+              { value: 35397, name: "民航" },
+            ],
+            emphasis: {
+              itemStyle: {
+                shadowBlur: 10,
+                shadowOffsetX: 0,
+                shadowColor: "rgba(0, 0, 0, 0.5)",
+              },
+            },
+          },
+        ],
+      };
+
+      option2 = {
+        color: ["#8ECFC9", "#FFBE7A", "#FA7F6F", "#82B0D2"],
+        title: {
+          text: "2023交通方式客运量分布",
+          left: "center",
+        },
+        tooltip: {
+          trigger: "item",
+        },
+        series: [
+          {
+            name: "客运量",
+            type: "pie",
+            radius: "70%",
+            data: [
+              { value: 368498, name: "铁路" },
+              { value: 1101153, name: "公路" },
+              { value: 25771, name: "水路" },
+              { value: 62000, name: "民航" },
+            ],
+            emphasis: {
+              itemStyle: {
+                shadowBlur: 10,
+                shadowOffsetX: 0,
+                shadowColor: "rgba(0, 0, 0, 0.5)",
+              },
+            },
+          },
+        ],
+      };
+
+      // 使用刚指定的配置项和数据显示图表。
+      myChart1.setOption(option1);
+      myChart2.setOption(option2);
+    </script>
+  </body>
+</html>
